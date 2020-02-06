@@ -8,8 +8,35 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello</h1>
-  <div class="container"></div>
+  <div class="container">
+    <form class="form" action="">
+      <label for="sort">Sort by:</label>
+      <select class="form__sort form__sort--js" name="sort" id="sort_column" onchange="handleChange(this.id, this.value)">
+        <option value="id">id</option>
+        <option value="acronym">acronym</option>
+        <option value="name">name</option>
+      </select>
+      
+      <label for="order">Order:</label>
+      <select class="form__order form__order--js" name="order" id="sort_order" onchange="handleChange(this.id, this.value)">
+        <option value="asc">ascending</option>
+        <option value="desc">descending</option>
+      </select>
+
+      <label for="filter">Filter:</label>
+      <input class="form__filter form__filter--js" type="text" id="filter" onchange="handleChange(this.id, this.value)">
+
+      <label for="page-size">Page size:</label>
+      <input class="form__size form__size--js" type="number" id="page_size" onchange="handleChange(this.id, this.value)">
+
+    </form>
+
+    <table class="table table--js"></table>
+
+    <div class="pagination pagination--js" >
+      <!-- <button class="page__button page__button--js"></button> -->
+    </div>
+  </div>
   
   <script src="main.js"></script>
 </body>

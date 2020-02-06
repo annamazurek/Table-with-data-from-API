@@ -1,29 +1,52 @@
-const container = document.querySelector('.container');
+"use strict"
 
-fetch('http://rt.ex7.pl/get-data', {method: 'POST'})  
+const table = document.querySelector('.table--js');
+const pagination = document.querySelector('.pagination--js');
+
+let options = {
+  sort_column: 'id',
+  sort_order: 'asc',
+  filter: '',
+  page_size: 5,
+  page: 1
+};
+
+function handleChange(id, value){
+  options[id]= value;
+  console.log(options);
+  fetchData();
+}
+console.log(options.sort_column)
+console.log()
+function fetchData(){
+  const {sort_column, sort_order, filter, page_size, page} = options;
+  fetch(`http://rt.ex7.pl/get-data?sort_column=${sort_column}&sort_order=${sort_order}&filter=${filter}&page_size=${page_size}&page=${page}`, {method: 'POST'})  
   .then(res => res.json())
-  .then(res => {
-    const data = Array.from(res.map(response => {
-      // console.log(response.acronym)
+  .then(data => {
+
+    const tableRows = Array.from(data.map(row => {
       return (
         `<tr>
-          <td>${response.id}</td>
-          <td>${response.acronym}</td>
-          <td>${response.name}</td>
+          <td>${row.id}</td>
+          <td>${row.acronym}</td>
+          <td>${row.name}</td>
         </tr>`
       )
     })).join('');
 
-    container.innerHTML = `
-      <table>
-          <tr class="row">
-            <th scope="col">Id</th>
-            <th scope="col">Acronym</th>
-            <th scope="col">Name</th>
+    table.innerHTML = `
+          <tr class="table__header">
+            <th class="table__id scope="col">Id</th>
+            <th class="table__acronym scope="col">Acronym</th>
+            <th class="table__name scope="col">Name</th>
           </tr>
-          ${data}
-      </table>
-    `
-  });
+          ${ tableRows }
+    `;
+    pagination.innerHTML = `
 
-// console.log(container.textContent)
+    `;
+console.log(data)
+  });
+}
+
+fetchData();
