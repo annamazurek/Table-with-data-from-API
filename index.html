@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="container">
-    <form class="form" action="">
-      <label for="sort">Sort by:</label>
-      <select class="form__sort form__sort--js" name="sort" id="sort_column" onchange="handleChange(this.id, this.value)">
-        <option value="id">id</option>
-        <option value="acronym">acronym</option>
-        <option value="name">name</option>
-      </select>
-      
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form" action="">
+
+        <div class="form__item">
+          <label for="sort">Sort by:</label>
+          <select
+            class="form__sort"
+            name="sort"
+            id="sort_column"
+            onchange="handleChange(this.id, this.value)"
+          >
+            <option value="id">id</option>
+            <option value="acronym">acronym</option>
+            <option value="name">name</option>
+          </select>
+        </div>
+
+      <div class="form__item">
       <label for="order">Order:</label>
-      <select class="form__order form__order--js" name="order" id="sort_order" onchange="handleChange(this.id, this.value)">
-        <option value="asc">ascending</option>
-        <option value="desc">descending</option>
-      </select>
+        <select
+          class="form__order"
+          name="order"
+          id="sort_order"
+          onchange="handleChange(this.id, this.value)"
+        >
+          <option value="asc">ascending</option>
+          <option value="desc">descending</option>
+        </select>
+      </div>
 
-      <label for="filter">Filter:</label>
-      <input class="form__filter form__filter--js" type="text" id="filter" onchange="handleChange(this.id, this.value)">
+        <div class="form__item">
+        <label for="filter">Filter:</label>
+        <input
+          class="form__filter"
+          type="text"
+          id="filter"
+          onchange="handleChange(this.id, this.value)"
+        />
+      </div>
 
-      <label for="page-size">Page size:</label>
-      <input class="form__size form__size--js" type="number" id="page_size" onchange="handleChange(this.id, this.value)">
+        <div class="form__item">
+        <label for="page-size">Page size:</label>
+        <input
+          class="form__size"
+          type="number"
+          id="page_size"
+          onchange="handleChange(this.id, this.value)"
+        />
+      </div class="form__item">
+      </form>
 
-    </form>
+        <table class="table table--js"></table>
 
-    <table class="table table--js"></table>
-
-    <div class="pagination pagination--js" >
-      <!-- <button class="page__button page__button--js"></button> -->
+        <div class="pagination pagination--js">
+          <!-- <button class="pagination page__button page__button--js" onclick="handleClick(3)">3</button> -->
+        </div>
     </div>
-  </div>
-  
-  <script src="main.js"></script>
-</body>
+
+    <script src="main.js"></script>
+  </body>
 </html>

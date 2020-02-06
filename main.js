@@ -8,7 +8,7 @@ let options = {
   sort_order: 'asc',
   filter: '',
   page_size: 5,
-  page: 1
+  page: 1,
 };
 
 function handleChange(id, value){
@@ -16,8 +16,13 @@ function handleChange(id, value){
   console.log(options);
   fetchData();
 }
-console.log(options.sort_column)
-console.log()
+
+function handleClick(i) {
+  options.page = i;
+  console.log(1234);
+  
+}
+
 function fetchData(){
   const {sort_column, sort_order, filter, page_size, page} = options;
   fetch(`http://rt.ex7.pl/get-data?sort_column=${sort_column}&sort_order=${sort_order}&filter=${filter}&page_size=${page_size}&page=${page}`, {method: 'POST'})  
@@ -42,10 +47,32 @@ function fetchData(){
           </tr>
           ${ tableRows }
     `;
-    pagination.innerHTML = `
 
-    `;
-console.log(data)
+
+//     var paramsString = `q=URLUtils.searchParams&page_size=${page_size}&page=${page}`;
+// var searchParams = new URLSearchParams(paramsString);
+
+// //Iterate the search parameters.
+// for (let p of searchParams) {
+//   console.log(p);
+// }
+
+    fetch("http://rt.ex7.pl/get-data?page_size=1000", {method: 'POST'})
+      .then(res => res.json())
+      .then(data => {
+        const pagesAmount = Math.ceil(data.length/options.page_size);
+        console.log(options.page)
+
+        for(let i = 1; i <= pagesAmount; i++){
+          pagination.innerHTML = pagination.innerHTML + `
+            <button  class="pagination__button" onclick="${() => handleClick(i)}">${i}</button>
+          `;
+        }
+      })
+
+  })
+  .catch((error) => {
+    console.error('Error:', error);
   });
 }
 
