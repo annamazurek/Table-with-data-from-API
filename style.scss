@@ -4,7 +4,6 @@
 
 body {
   font-family: 'Open Sans';
-  // padding: 10px;
 }
 
 .container {
@@ -16,14 +15,11 @@ body {
 }
 
 .form {
-  // border: 1px solid green;
   padding: 30px 0;
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  // flex-wrap: wrap;
-  // color: #fff;
   &__item {
     &:not(:last-child) {
       margin-right: 20px;
@@ -36,10 +32,7 @@ body {
     padding-right: 6px;
   }
   input, select {
-
     border: none;
-    // background: rgb(62, 93, 151);
-    // background: linear-gradient(rgba(78, 117, 175, 0.863), #3e5d97);
     border: 1px solid #4a5564;
     border-radius: 4px;
     padding: 6px;
@@ -51,15 +44,12 @@ body {
   display: flex;
   justify-content: center;
   padding-bottom: 30px;
-  // border: 1px solid black;
   &__button {
     padding: 6px;
     width: 42px;
     border: none;
     border-right: 2px solid #4a5564;
     background: #fff;
-    // border-radius: 4px;
-
     cursor: pointer;
     &:hover {
       background: rgb(253, 204, 129);
@@ -68,12 +58,10 @@ body {
     &:last-child {
       border: none;
     }
-    // border-left: 1px solid red;
   }
 }
 
 .table {
-  /* table-layout: fixed; */
   width: 80%;
   border-collapse: collapse;
   margin-bottom: 16px;
@@ -93,24 +81,22 @@ body {
     width: 20%;
     background: rgba(231, 246, 253, 0.822);
   }
-}
-
-
-th, td {
-  padding: 20px;
-    text-align: start;
-}
-th {
-  &:first-child {
-    border-top-left-radius: 14px;
+  tr:not(.table__header) {
+    border: 1px solid #95a2c0;
+    border-bottom: 2px solid #95a2c0;
   }
-  &:last-child {
-    border-top-right-radius: 14px;
+  th, td {
+    padding: 20px;
+      text-align: start;
   }
-}
-tr:not(.table__header) {
-  border: 1px solid #95a2c0;
-  border-bottom: 2px solid #95a2c0;
+  th {
+    &:first-child {
+      border-top-left-radius: 14px;
+    }
+    &:last-child {
+      border-top-right-radius: 14px;
+    }
+  }
 }
 
 @media(max-width: 1160px) {
@@ -124,7 +110,11 @@ tr:not(.table__header) {
 @media(max-width: 974px) {
   .form {
     flex-wrap: wrap;
-    justify-content: space-around;
-    // flex-direction: column;
+    &__item {
+      margin-bottom: 6px;
+    }
+  }
+  body {
+    font-size: .8rem;
   }
 }

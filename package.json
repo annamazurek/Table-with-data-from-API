@@ -1,0 +1,20 @@
+{
+  "name": "ex7recruitment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annamazurek/ex7recruitment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annamazurek/ex7recruitment/issues"
+  },
+  "homepage": "https://github.com/annamazurek/ex7recruitment#readme"
+}
